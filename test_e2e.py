@@ -29,7 +29,7 @@ def add_task(page: Page, task_name: str):
     page.fill('input[name="title"]', task_name)
     page.click('button[type="submit"]') 
     expect(page.locator(f'.list-group-item:has-text("{task_name}")')).to_be_visible()
-
+ 
 def clear_all_tasks(page: Page):
     """Delete all visible tasks"""
     while page.locator('button[title="Delete task"]').count() > 0:
@@ -142,8 +142,8 @@ def test_data_isolation(browser_context: Page):
             print(f" FAIL: USER1's task '{task}' still visible after USER2 added tasks")
             raise
 
-def test_pagination_simple(browser_context: Page):
-    """Simple test: tasks shouldn't disappear when paginating"""
+def test_pagination(browser_context: Page):
+    """Test tasks shouldn't disappear when paginating"""
     page = browser_context
     login(page, USER1["username"], USER1["password"])
     

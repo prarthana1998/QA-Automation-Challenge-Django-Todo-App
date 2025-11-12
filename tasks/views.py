@@ -73,7 +73,7 @@ def dashboard_view(request):
                 messages.error(request, 'Task not found.')
             return redirect('dashboard')
     
-    tasks = Task.objects.all()
+    tasks = Task.objects.filter(user=request.user) # Fixed BUG1: Filter tasks by logged-in user
 
     # Get page number from query params (default to 0)
     try:
@@ -89,7 +89,7 @@ def dashboard_view(request):
     if page == 0:
         paginated_tasks = tasks[start:end]
     else:
-        start = (page + 1) * ITEMS_PER_PAGE
+        start = page * ITEMS_PER_PAGE # Fixed BUG2: Corrected pagination offset calculation
         end = start + ITEMS_PER_PAGE
         paginated_tasks = tasks[start:end]
 
