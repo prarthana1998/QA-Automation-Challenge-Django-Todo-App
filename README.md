@@ -11,7 +11,7 @@ This repository contains automated end-to-end tests for the Django Todo App chal
 cd todo_app
 ```
 
-### 2. Create a Virtual Environment (Recommended)
+### 2. Create a Virtual Environment
 
 ```bash
 python -m venv venv
@@ -30,7 +30,13 @@ pip install -r requirements.txt
 python manage.py migrate
 ```
 
-### 5. Run tests using pytest
+### 5. Run the Development Server
+
+```bash
+python manage.py runserver
+```
+
+### 6. Run tests using pytest
 
 ```bash
 pytest --headed
@@ -38,7 +44,7 @@ pytest --headed
 
 ## Test Coverage
 - ✅ Login functionality
-- ✅ Task CRUD operations
+- ✅ Task creation, completion and deletion operations
 - ✅ Data isolation between users
 - ✅ Pagination
 
